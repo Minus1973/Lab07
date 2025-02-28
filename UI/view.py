@@ -11,12 +11,8 @@ class View(ft.UserControl):
         self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
-        # graphical elements
-        self._title = None
-        self.dd_mese: ft.Dropdown = None
-        self.btn_umidita: ft.ElevatedButton = None
-        self.btn_calcola_sequenza: ft.ElevatedButton = None
-        self.lst_result: ft.ListView = None
+
+        
 
     def load_interface(self):
         # title
@@ -38,8 +34,7 @@ class View(ft.UserControl):
                                             ft.dropdown.Option(key="12", text="dicembre"),],
                                    label="mese",
                                    width=200,
-                                   hint_text="Selezionare un mese",
-                                   on_change=self._controller.read_mese)
+                                   hint_text="Selezionare un mese")
 
         self.btn_umidita = ft.ElevatedButton(text="Umidità media",
                                              tooltip="Verifica l'umidità media per città, nel mese selezionato",
@@ -47,7 +42,8 @@ class View(ft.UserControl):
 
         self.btn_calcola_sequenza = ft.ElevatedButton(text="Calcola sequenza",
                                              tooltip="Calcola la sequenza ottimale per le analisi",
-                                             on_click=self._controller.handle_sequenza)
+                                             #on_click=self._controller.handle_sequenza,
+                                                      disabled= True)
         row1 = ft.Row([self.dd_mese, self.btn_umidita, self.btn_calcola_sequenza],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
